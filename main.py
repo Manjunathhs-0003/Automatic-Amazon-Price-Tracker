@@ -3,11 +3,11 @@ import lxml
 from bs4 import BeautifulSoup
 import smtplib
 
-url = "https://www.amazon.com/dp/B075CYMYK6?psc=1&ref_=cm_sw_r_cp_ud_ct_FM9M699VKHTT47YD50Q6"
+url = "ENTER THE PRODUCTS URL HERE"
 header = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36",
     "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8"
-}
+} #do not change the header
 
 response = requests.get(url, headers=header)
 
@@ -22,7 +22,7 @@ price_as_float = float(price_without_currency)
 title = soup.find(id="productTitle").get_text().strip()
 # print(title)
 
-BUY_PRICE = 200
+BUY_PRICE = 200 #set the buying price to track the changes in price
 
 if price_as_float < BUY_PRICE:
     message = f"{title} is now {price}"
